@@ -1,60 +1,79 @@
 /* --- Base Styles --- */
 * { box-sizing: border-box; }
-body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background: #fdfdfd; }
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fdfdfd;
+  color: #333;
+}
+
 main { padding: 2rem; max-width: 1200px; margin: auto; }
 
-/* --- The Pinterest Grid (No Column Count) --- */
+/* --- Pinterest-Style Masonry Grid --- */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-auto-rows: 300px; /* Base row height */
-  grid-auto-flow: dense; /* The secret to the Pinterest look */
+  grid-auto-flow: dense;
   gap: 1rem;
 }
 
-/* Allow taller items to span multiple rows */
-.item:nth-child(even) { grid-row: span 3; } 
-
 .item {
   width: 100%;
-  height: 100%;
   overflow: hidden;
   border-radius: 8px;
 }
 
-/* --- Content Styling --- */
-.item img, .item video {
+/* Original Dimensions: object-fit: contain ensures nothing is cropped */
+.gallery .item img, 
+.gallery .item video {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* Keeps images sharp and properly filled */
+  height: auto; /* Respects the original aspect ratio */
   display: block;
+  object-fit: contain; 
 }
 
-/* --- Carousel Override (Forces it to stay stable) --- */
+/* --- Carousel Fixes (Fixed size, no cropping) --- */
 .carousel {
-  width: 100%;
-  height: 100%;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  border-radius: 8px;
   border: 1px solid #eee;
+  background: #f9f9f9;
 }
 
 .carousel-inner {
   display: flex;
-  height: 100%;
   transition: transform 0.5s ease-in-out;
+  width: 100%;
 }
 
 .carousel-inner img {
   min-width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; /* Respects original dimensions */
+  object-fit: contain; /* Ensures the whole image is visible */
+  display: block;
 }
 
-/* Buttons stay the same */
+/* Carousel Buttons */
 .prev, .next {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer; border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 18px;
+  z-index: 10;
 }
 .prev { left: 5px; }
 .next { right: 5px; }
+
+/* Header/Footer (Unchanged) */
+header { padding: 3rem 2rem; text-align: center; }
+footer { text-align: center; padding: 2rem; color: #888; }
