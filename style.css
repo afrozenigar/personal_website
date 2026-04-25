@@ -13,7 +13,7 @@ main { padding: 2rem; max-width: 1200px; margin: auto; }
 }
 
 /* Allow taller items to span multiple rows */
-.item:nth-child(even) { grid-row: span 2; } 
+.item:nth-child(even) { grid-row: span 3; } 
 
 .item {
   width: 100%;
