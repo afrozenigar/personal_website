@@ -64,3 +64,38 @@ footer {
   font-size: 0.9rem;
   margin-top: 2rem;
 }
+/* --- Carousel Styles --- */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px; /* Matching your existing .item img max-width */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-inner img {
+  min-width: 100%; /* Ensures each image takes full width */
+  display: block;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.prev { left: 5px; }
+.next { right: 5px; }
