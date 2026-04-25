@@ -9,33 +9,30 @@ body {
   color: #333;
 }
 
-header { padding: 3rem 2rem; text-align: center; }
-
+header { padding: 3rem 2rem; text-align: center; border-bottom: 1px solid #eee; }
 header h1 { margin: 0; font-size: 2.5rem; }
-
 nav { margin-top: 1rem; }
-
 nav a { margin: 0 1rem; text-decoration: none; color: #555; font-weight: 600; }
 
 main { padding: 2rem; max-width: 1200px; margin: auto; }
-
 h2 { font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center; }
 
-/* --- Masonry Gallery Layout --- */
+/* --- Masonry Gallery (Pinterest Style) --- */
 .gallery {
+  column-count: 4;
   column-gap: 1rem;
 }
 
 .item {
   margin-bottom: 1rem;
-  break-inside: avoid; /* Prevents items from breaking between columns */
+  break-inside: avoid;
 }
 
 /* Responsive columns */
 @media (max-width: 900px) { .gallery { column-count: 3; } }
 @media (max-width: 600px) { .gallery { column-count: 2; } }
 
-/* Images and Video */
+/* Standard Images & Videos */
 .gallery .item img, 
 .gallery .item video {
   width: 100%;
@@ -45,32 +42,40 @@ h2 { font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center; }
   border: 1px solid #eee;
 }
 
-/* --- Carousel Fixes (Crucial) --- */
+/* --- Hardened Carousel (Fixes the vertical issue) --- */
 .carousel {
   position: relative;
   overflow: hidden;
   width: 100%;
+  max-width: 300px; /* Constraints */
+  height: 300px;
   border-radius: 8px;
   border: 1px solid #eee;
-  display: block; /* Ensures carousel behaves as a single unit */
-  break-inside: avoid; /* Prevents carousel from splitting in columns */
+  
+  /* These force it to ignore masonry flow */
+  display: block !important;
+  break-inside: avoid !important;
+  column-count: 1 !important;
+  margin: 0 auto 1rem auto;
 }
 
 .carousel-inner {
-  display: flex;
+  display: flex !important;
+  flex-direction: row !important;
   transition: transform 0.5s ease-in-out;
   width: 100%;
+  column-count: 1 !important;
 }
-.carousel-inner {
-    column-count: 1 !important;
-}
+
 .carousel-inner img {
   min-width: 100%;
   height: 300px;
-  object-fit: cover; /* Crops image nicely */
-  display: block;
+  object-fit: cover;
+  display: block !important;
+  column-count: 1 !important;
 }
 
+/* Carousel Buttons */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -81,8 +86,9 @@ h2 { font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center; }
   padding: 10px;
   cursor: pointer;
   border-radius: 50%;
+  font-size: 18px;
+  z-index: 10;
 }
-
 .prev { left: 5px; }
 .next { right: 5px; }
 
