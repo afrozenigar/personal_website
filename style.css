@@ -99,3 +99,6 @@ footer {
 
 .prev { left: 5px; }
 .next { right: 5px; }
+.item {
+  flex: 0 0 300px; /* Forces this item to stay 300px wide and not shrink */
+}
