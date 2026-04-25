@@ -9,21 +9,13 @@ body {
   color: #333;
 }
 
-header {
-  padding: 3rem 2rem;
-  text-align: center;
-}
+header { padding: 3rem 2rem; text-align: center; }
 
 header h1 { margin: 0; font-size: 2.5rem; }
 
 nav { margin-top: 1rem; }
 
-nav a {
-  margin: 0 1rem;
-  text-decoration: none;
-  color: #555;
-  font-weight: 600;
-}
+nav a { margin: 0 1rem; text-decoration: none; color: #555; font-weight: 600; }
 
 main { padding: 2rem; max-width: 1200px; margin: auto; }
 
@@ -31,51 +23,50 @@ h2 { font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center; }
 
 /* --- Masonry Gallery Layout --- */
 .gallery {
-  column-count: 4; /* Number of columns */
-  column-gap: 1.5rem;
+  column-count: 4;
+  column-gap: 1rem;
 }
 
 .item {
-  margin-bottom: 1.5rem;
-  break-inside: avoid; /* Prevents items from splitting across columns */
+  margin-bottom: 1rem;
+  break-inside: avoid; /* Prevents items from breaking between columns */
 }
 
-/* Responsive columns: Adjust for smaller screens */
+/* Responsive columns */
 @media (max-width: 900px) { .gallery { column-count: 3; } }
 @media (max-width: 600px) { .gallery { column-count: 2; } }
 
-/* Images and Video Styling */
+/* Images and Video */
 .gallery .item img, 
 .gallery .item video {
   width: 100%;
-  height: auto; /* Maintains original aspect ratio */
+  height: auto;
   display: block;
-  border-radius: 12px;
-  background: #eee;
-  transition: transform 0.2s;
+  border-radius: 8px;
+  border: 1px solid #eee;
 }
 
-.gallery .item img:hover { transform: scale(1.02); }
-
+/* --- Carousel Fixes (Crucial) --- */
 .carousel {
   position: relative;
   overflow: hidden;
   width: 100%;
-  border-radius: 12px;
-  background: #eee;
- 
-  display: block; 
-  break-inside: avoid; 
+  border-radius: 8px;
+  border: 1px solid #eee;
+  display: block; /* Ensures carousel behaves as a single unit */
+  break-inside: avoid; /* Prevents carousel from splitting in columns */
 }
+
 .carousel-inner {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  width: 100%; 
+  width: 100%;
 }
+
 .carousel-inner img {
-  min-width: 100%; 
+  min-width: 100%;
   height: 300px;
-  object-fit: cover;
+  object-fit: cover; /* Crops image nicely */
   display: block;
 }
 
@@ -83,21 +74,15 @@ h2 { font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center; }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 10px;
   cursor: pointer;
   border-radius: 50%;
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev { left: 5px; }
+.next { right: 5px; }
 
-/* --- Footer --- */
-footer {
-  text-align: center;
-  padding: 3rem;
-  font-size: 0.9rem;
-  color: #888;
-}
+footer { text-align: center; padding: 2rem; color: #888; font-size: 0.9rem; }
