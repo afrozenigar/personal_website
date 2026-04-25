@@ -1,63 +1,87 @@
-/* --- Base Styles --- */
-* { box-sizing: border-box; }
-
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background: #fdfdfd;
   color: #333;
 }
 
-main { padding: 2rem; max-width: 1200px; margin: auto; }
+header {
+  background-color: #fafafa;
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
 
-/* --- Pinterest-Style Masonry Grid --- */
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+header nav {
+  margin-top: 1rem;
+}
+
+header nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #555;
+}
+
+main {
+  padding: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-auto-flow: dense;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
-.item {
+.gallery .item img {
   width: 100%;
-  overflow: hidden;
+  max-width: 300px;
+  height: auto;
+  border: 1px solid #ccc;
   border-radius: 8px;
 }
 
-/* Original Dimensions: object-fit: contain ensures nothing is cropped */
-.gallery .item img, 
 .gallery .item video {
-  width: 100%;
-  height: auto; /* Respects the original aspect ratio */
-  display: block;
-  object-fit: contain; 
+flex: 2px;
+ /* width: 100%;*/
+ max-width: 500px;
 }
 
-/* --- Carousel Fixes (Fixed size, no cropping) --- */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #f1f1f1;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
 .carousel {
   position: relative;
   overflow: hidden;
   width: 100%;
+  max-width: 300px;
+  height: 300px; /* Keep this height consistent */
   border-radius: 8px;
-  border: 1px solid #eee;
-  background: #f9f9f9;
-}
-
-.carousel-inner {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 100%;
+  border: 1px solid #ccc;
 }
 
 .carousel-inner img {
-  min-width: 100%;
-  height: auto; /* Respects original dimensions */
-  object-fit: contain; /* Ensures the whole image is visible */
-  display: block;
+  width: 100%;
+  height: 300px;         /* Match container height */
+  object-fit: cover;     /* Prevents warping */
+  object-position: center;
+  flex-shrink: 0;        /* Prevents squishing */
 }
 
-/* Carousel Buttons */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -69,11 +93,10 @@ main { padding: 2rem; max-width: 1200px; margin: auto; }
   cursor: pointer;
   border-radius: 50%;
   font-size: 18px;
-  z-index: 10;
 }
+
 .prev { left: 5px; }
 .next { right: 5px; }
-
-/* Header/Footer (Unchanged) */
-header { padding: 3rem 2rem; text-align: center; }
-footer { text-align: center; padding: 2rem; color: #888; }
+.item {
+  flex: 0 0 300px; /* Forces this item to stay 300px wide and not shrink */
+}
