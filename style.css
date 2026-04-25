@@ -57,28 +57,23 @@ h2 { font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center; }
 
 .gallery .item img:hover { transform: scale(1.02); }
 
-/* Ensure the carousel wrapper acts as a block and ignores column layout */
 .carousel {
   position: relative;
   overflow: hidden;
   width: 100%;
   border-radius: 12px;
   background: #eee;
-  /* Add these lines to isolate it from masonry */
+ 
   display: block; 
   break-inside: avoid; 
 }
-
-/* Force carousel images to stay in a flat horizontal row */
 .carousel-inner {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  width: 100%; /* Ensure container fills the carousel */
+  width: 100%; 
 }
-
-/* Make sure carousel images don't inherit the gallery image styles */
 .carousel-inner img {
-  min-width: 100%; /* Crucial: ensures only one image shows at a time */
+  min-width: 100%; 
   height: 300px;
   object-fit: cover;
   display: block;
